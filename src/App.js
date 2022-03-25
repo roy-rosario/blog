@@ -11,6 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Avatar from '@material-ui/core/Avatar'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
+import TablePagination from '@material-ui/core/TablePagination'
 
 
 const useStyles = makeStyles((theme) =>({
@@ -28,7 +29,11 @@ const useStyles = makeStyles((theme) =>({
     justifyContent: 'center',
     alignItems: 'center',
     color: '#fff',
-    fontSize: '4rem'
+    fontSize: '4rem',
+    [theme.breakpoints.down("sm")]: {
+      height: 300,
+      fontSize: "3rem"
+    }
   },
   blogsContainer:{
     paddingTop: theme.spacing(3)
@@ -50,6 +55,10 @@ const useStyles = makeStyles((theme) =>({
   },
   author:{
     display: 'flex'
+  },
+  paginationContainer:{
+    display:"flex",
+    justifyContent: "center"
   }
 }));
 
@@ -131,6 +140,9 @@ function App() {
                   avatar="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />                                       
                 </Grid>
             </Grid>
+            <Box my={4} className={classes.paginationContainer}>
+              <TablePagination count={10}/>
+            </Box>
       </Container>
     </div>
   );
